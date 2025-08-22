@@ -7,14 +7,14 @@ import { useMediaQuery } from "react-responsive";
 const FlavorSlider = () => {
     const sliderRef = useRef();
 
-    const isTablet = useMediaQuery({
+    const isSmallScreen = useMediaQuery({
         query: "(max-width: 1024px)",
     });
 
     useGSAP(() => {
         const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
 
-        if (!isTablet) {
+        if (!isSmallScreen) {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".flavor-section",
@@ -61,7 +61,7 @@ const FlavorSlider = () => {
                 },
                 "<"
             );
-    }, [isTablet]);
+    }, { dependencies: [isSmallScreen], revertOnUpdate: true });
 
     return (
         <div ref={ sliderRef } className="slider-wrapper">

@@ -5,7 +5,7 @@ const flavorList = [
         rotation: "md:rotate-[-8deg] rotate-0",
     },
     {
-        name: "Stawberry Milk",
+        name: "Strawberry Milk",
         color: "red",
         rotation: "md:rotate-[8deg] rotate-0",
     },
@@ -31,7 +31,7 @@ const flavorList = [
     },
 ];
 
-const nutrientLists = [
+const nutrientList = [
     { label: "Potassium", amount: "245mg" },
     { label: "Calcium", amount: "500mg" },
     { label: "Vitamin A", amount: "176mcg" },
@@ -89,4 +89,4 @@ const cards = [
     },
 ];
 
-export { flavorList, nutrientLists, cards };
+export { flavorList, nutrientList, cards };
