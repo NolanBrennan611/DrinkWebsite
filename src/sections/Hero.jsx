@@ -1,47 +1,49 @@
 import gsap from 'gsap';
-import { SplitText, ScrollTrigger } from "gsap/all";
+import { SplitText } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 
 const Hero = () => {
     useGSAP(() => {
-        const titleSplit = SplitText.create(".hero-title", { type: "chars" });
-        const tl = gsap.timeline({
-            delay: 1,
-        })
+        document.fonts.ready.then(() => {
+            const titleSplit = SplitText.create(".hero-title", { type: "chars" });
+            const tl = gsap.timeline({
+                delay: 1,
+            })
 
-        //Whole container appearing
-        tl.to(".hero-content", {
-            opacity: 1,
-            y: 0,
-            ease: "power1.inOut",
-        })
-            .to(".hero-text-scroll", {
-                duration: 1,
-                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-                ease: "circ.out"
-            }, "-=0.3")
-            .from(titleSplit.chars, {
-                yPercent: 200,
-                stagger: 0.02,
-                ease: "power2.out",
-            });
+            //Whole container appearing
+            tl.to(".hero-content", {
+                opacity: 1,
+                y: 0,
+                ease: "power1.inOut",
+            })
+                .to(".hero-text-scroll", {
+                    duration: 1,
+                    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+                    ease: "circ.out"
+                }, "-=0.3")
+                .from(titleSplit.chars, {
+                    yPercent: 200,
+                    stagger: 0.02,
+                    ease: "power2.out",
+                });
 
-        const heroTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".hero-container",
-                start: "1% top",
-                end: "bottom top",
-                scrub: true,
-            }
-        })
+            const heroTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".hero-container",
+                    start: "1% top",
+                    end: "bottom top",
+                    scrub: true,
+                }
+            })
 
-        heroTl.to(".hero-container", {
-            rotate: 7,
-            scale: 0.9,
-            yPercent: 30,
-            ease: "power1.inOut",
+            heroTl.to(".hero-container", {
+                rotate: 7,
+                scale: 0.9,
+                yPercent: 30,
+                ease: "power1.inOut",
+            })
         })
-    })
+    });
 
     return (
         <section className="bg-main-bg">
